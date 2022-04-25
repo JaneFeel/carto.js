@@ -6,6 +6,8 @@
           <span class="Legend-categoryPolygon" style="opacity:1; background: <%= categories[i].color %>;"></span>
         <% } else if (categories[i].style == 'pattern-file') { %>
           <span class="Legend-categoryFile" style="opacity:1; background-image: url(<%= categories[i].icon %>);"></span>
+        <% } else if (items[i].style == 'line-pattern-file') { %>
+          <span class="Legend-categoryLineFile" style="opacity:1;"><span style="background-image: url(<%= items[i].icon %>);"></span></span>
         <% } else if (categories[i].icon) { %>
           <span class="Legend-categoryIcon js-image-container" data-icon="<%= categories[i].icon %>" data-color="<%= categories[i].color %>"></span>
         <% } else if (categories[i].color) { %>
