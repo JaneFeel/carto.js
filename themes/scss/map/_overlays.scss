@@ -221,6 +221,7 @@ $buttonColor: #636D72;
   width: auto;
   height: auto;
   z-index: 10;
+  display: none !important;
 }
 
 /* Legends */
@@ -536,5 +537,6 @@ $maxLegendContainerHeight: 300px;
     right: 0;
     left: initial;
     transform: initial;
+    display: none !important;
   }
 }

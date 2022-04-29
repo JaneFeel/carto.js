@@ -7,9 +7,9 @@ module.exports = View.extend({
   tagName: 'a',
 
   render: function () {
-    this.$el.html(template());
-    this.$el.attr('href', URL);
-    this.$el.attr('target', '_blank');
+    //this.$el.html(template());
+    //this.$el.attr('href', URL);
+    //this.$el.attr('target', '_blank');
     return this;
   }
 });
