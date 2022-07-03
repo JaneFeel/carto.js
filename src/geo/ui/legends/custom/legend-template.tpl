@@ -4,7 +4,7 @@
       <li class="Legend-categoryListItem u-flex u-alignCenter">
         <% if (items[i].style == 'polygon-fill') { %>
           <span class="Legend-categoryPolygon" style="opacity:1; background: <%= items[i].color %>;"></span>
-        <% } else if (items[i].style == 'pattern-file') { %>
+        <% } else if (items[i].style == 'pattern-file' || items[i].style == 'line-color') { %>
           <span class="Legend-categoryFile" style="opacity:1; background-image: url(<%= items[i].icon %>);"></span>
         <% } else if (items[i].style == 'line-pattern-file') { %>
           <span class="Legend-categoryLineFile" style="opacity:1;"><span style="background-image: url(<%= items[i].icon %>);"></span></span>      
