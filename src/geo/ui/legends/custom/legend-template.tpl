@@ -13,7 +13,7 @@
         <% } else if (items[i].color) { %>
           <span class="Legend-categoryCircle" style="opacity:1; background: <%= items[i].color %>;"></span>
         <% } %>
-        <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-upperCase u-ellipsis" title="<%= items[i].title %>"><%= items[i].title %></p>
+        <p class="Legend-categoryTitle CDB-Text CDB-Size-small u-ellipsis" title="<%= items[i].title %>"><%= items[i].title %></p>
       </li>
     <% } %>
   </ul>
