@@ -124,6 +124,9 @@ var InfowindowModel = Backbone.Model.extend({
     for (var j = 0; j < fields.length; ++j) {
       var field = fields[j];
       var value = attributes[field.name];
+      if (typeof value === 'string' || value instanceof String) {
+        value = value.replace('T00:00:00.000Z', '');
+      }
       if (options.showEmptyFields || (value !== undefined && value !== null)) {
         renderFields.push({
           name: field.name,
