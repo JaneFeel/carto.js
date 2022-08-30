@@ -51,7 +51,8 @@ function Engine (params) {
     client: params.client,
     apiKey: params.apiKey,
     authToken: params.authToken,
-    templateName: params.templateName
+    templateName: params.templateName,
+    mapId: params.mapId
   };
 
   this._windshaftClient = new WindshaftClient(this._windshaftSettings);
@@ -346,6 +347,10 @@ Engine.prototype._buildParams = function (includeFilters) {
 
   if (includeFilters && !_.isEmpty(this._dataviewsCollection.getFilters())) {
     params.filters = this._dataviewsCollection.getFilters();
+  }
+
+  if (this._windshaftSettings.mapId) {
+    params.map_id = this._windshaftSettings.mapId;
   }
 
   if (this._windshaftSettings.apiKey) {
