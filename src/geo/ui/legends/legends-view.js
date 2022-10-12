@@ -9,7 +9,7 @@ var LayerLegendsView = require('./layer-legends-view');
 var LegendsView = View.extend({
   className: 'CDB-Legends-canvas',
   events: {
-    "click button.btn-legends-toggle": "_onToggleButtonClick",
+    'click button.btn-legends-toggle': '_onToggleButtonClick'
   },
 
   initialize: function (options) {
@@ -19,7 +19,7 @@ var LegendsView = View.extend({
     this._layersCollection = options.layersCollection;
     this.settingsModel = options.settingsModel;
     this.togglerModel = new Backbone.Model({
-      //是否最大化
+      // 是否最大化
       isShow: true
     });
 
@@ -34,7 +34,6 @@ var LegendsView = View.extend({
     this.listenTo(this._layersCollection, 'add remove layerMoved', this._onLayersChanged);
     this.listenTo(this.settingsModel, 'change', this._onSettingsModelChanged);
     this.listenTo(this.togglerModel, 'change', this._onToggleModelChanged);
-
   },
 
   render: function () {
@@ -106,28 +105,26 @@ var LegendsView = View.extend({
   _container: function () {
     return this.el.querySelector('.js-container');
   },
-  LegendsView.prototype._onToggleModelChanged = function () {
-    console.log("LegendsView#_onToggleModelChanged:", this.togglerModel)
-    this._renderToggleButton()
+  _onToggleModelChanged: function () {
+    this._renderToggleButton();
 
-    let isShow = this.togglerModel.get("isShow")
+    let isShow = this.togglerModel.get('isShow');
     if (isShow) {
-      this.$(".CDB-Legends-canvasInner").css({ height: 'auto' })
-    }
-    else {
-      this.$(".CDB-Legends-canvasInner").css({ height: '30px' })
+      this.$('.CDB-Legends-canvasInner').css({ height: 'auto' });
+    } else {
+      this.$('.CDB-Legends-canvasInner').css({ height: '30px' });
     }
   },
 
   _renderToggleButton: function () {
-    let isShow = this.togglerModel.get("isShow")
-    this.$el.find(".CDB-Legends-toggle").remove()
+    let isShow = this.togglerModel.get('isShow');
+    this.$el.find('.CDB-Legends-toggle').remove();
     this.$el.append(template_toggle_button({ isShow }));
   },
 
   _onToggleButtonClick: function () {
-    let isShow = this.togglerModel.get("isShow")
-    this.togglerModel.set({ isShow: !isShow })
+    let isShow = this.togglerModel.get('isShow');
+    this.togglerModel.set({ isShow: !isShow });
   },
   _renderLayerLegends: function (layerModel) {
     var layerLegendsView = new LayerLegendsView({

@@ -239,7 +239,8 @@ $maxLegendContainerHeight: 300px;
 .CDB-Legends-canvas {
   position: absolute;
   top: 16px;
-  left: 16px;
+  left: auto;
+  right: 16px;
   max-width: 500px;
   width: auto;
   height: auto;
