@@ -21,5 +21,4 @@ var CategoryLegendView = LegendViewBase.extend({
     return categories;
   }
 });
-
 module.exports = CategoryLegendView;
