@@ -239,10 +239,12 @@ $maxLegendContainerHeight: 300px;
 .CDB-Legends-canvas {
   position: absolute;
   top: 16px;
-  left: 16px;
-  width: 310px;
+  left: auto;
+  right: 16px;
+  max-width: 500px;
+  width: auto;
   height: auto;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 90px);
   border-radius: 4px;
   background: #FFF;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
@@ -256,7 +258,7 @@ $maxLegendContainerHeight: 300px;
   right: 0;
   bottom: 0;
   left: 0;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 90px);
   padding: 24px 24px 0;
   border-radius: $baseSize / 2;
   box-sizing: border-box;
@@ -270,6 +272,11 @@ $maxLegendContainerHeight: 300px;
   height: 60px;
   z-index: 1;
   pointer-events: none;
+}
+.CDB-Legends-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .CDB-Legends-canvasShadow--top {
   @include background-gradient(#FFF, rgba(255, 255, 255, 0));

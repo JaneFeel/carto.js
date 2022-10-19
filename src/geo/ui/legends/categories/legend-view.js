@@ -11,7 +11,7 @@ var CategoryLegendView = LegendViewBase.extend({
   _getCategories: function () {
     var categories = this.model.get('categories').slice(0);
     var _default = this.model.get('default');
-    if (_default) {
+    if (_default && _default.icon !== '' && _default.color !== '') {
       categories.push({
         title: 'Others',
         icon: _default.icon,
@@ -21,5 +21,4 @@ var CategoryLegendView = LegendViewBase.extend({
     return categories;
   }
 });
-
 module.exports = CategoryLegendView;
