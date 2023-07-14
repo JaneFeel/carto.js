@@ -5,7 +5,7 @@ var VALID_PROPS = ['line-color', 'marker-fill', 'polygon-fill', 'marker-file'];
 var VALID_MAPPINGS = ['='];
 var MAPPING_STYLE = {
   'polygon-fill': 'polygon-fill',
-  'line-color': 'line-pattern-file'
+  'line-color': 'line-color'
 }
 
 var isEveryBucketValid = function (rule) {
@@ -20,14 +20,24 @@ var generateCategories = function (bucketsColor, bucketsIcon, prop) {
     var bucketIcon = _.find(bucketsIcon, function (bucket) {
       return bucket.filter.name === bucketColor.filter.name;
     });
+    var icon = ''
+    if (prop == 'line-color') {
+      icon = _lineColorLink(bucketColor.value)
+    } else {
+      icon = (bucketIcon && bucketIcon.value) ? _extractURL(bucketIcon.value) : ''
+    }
     return {
       title: bucketColor.filter.name,
-      icon: (bucketIcon && bucketIcon.value) ? _extractURL(bucketIcon.value) : '',
+      icon: icon,
       color: bucketColor.value,
       style: MAPPING_STYLE[prop]
     };
   });
 };
+
+var _lineColorLink = function (color) {
+  return "/image_proxy/svg_line.svg?color=" + encodeURIComponent(color)
+}
 
 var _extractURL = function (str) {
   var url = '';
@@ -56,11 +66,18 @@ module.exports = {
     var categoryBucketsIcon = ruleIcon.getBucketsWithCategoryFilter();
     var defaultBucketsColor = ruleColor.getBucketsWithDefaultFilter();
     var defaultBucketsIcon = ruleIcon.getBucketsWithDefaultFilter();
+    var icon = ''
+
+    if (prop == 'line-color') {
+      icon = _lineColorLink(defaultBucketsColor[0].value)
+    } else {
+      icon = _.isEmpty(defaultBucketsIcon) ? '' : _extractURL(defaultBucketsIcon[0].value)
+    }
 
     return {
       categories: generateCategories(categoryBucketsColor, categoryBucketsIcon, prop),
       default: {
-        icon: _.isEmpty(defaultBucketsIcon) ? '' : _extractURL(defaultBucketsIcon[0].value),
+        icon: icon,
         color: _.isEmpty(defaultBucketsColor) ? '' : defaultBucketsColor[0].value,
         style: MAPPING_STYLE[prop]
       }
