@@ -15,7 +15,8 @@ var CategoryLegendView = LegendViewBase.extend({
       categories.push({
         title: 'Others',
         icon: _default.icon,
-        color: _default.color
+        color: _default.color,
+        style: _default.style
       });
     }
     return categories;

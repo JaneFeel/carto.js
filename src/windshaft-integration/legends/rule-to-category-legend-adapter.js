@@ -3,6 +3,10 @@ var Rule = require('./rule');
 
 var VALID_PROPS = ['line-color', 'marker-fill', 'polygon-fill', 'marker-file'];
 var VALID_MAPPINGS = ['='];
+var MAPPING_STYLE = {
+  'polygon-fill': 'polygon-fill',
+  'line-color': 'line-pattern-file'
+}
 
 var isEveryBucketValid = function (rule) {
   var buckets = rule.getBucketsWithCategoryFilter();
@@ -11,7 +15,7 @@ var isEveryBucketValid = function (rule) {
   });
 };
 
-var generateCategories = function (bucketsColor, bucketsIcon) {
+var generateCategories = function (bucketsColor, bucketsIcon, prop) {
   return _.map(bucketsColor, function (bucketColor) {
     var bucketIcon = _.find(bucketsIcon, function (bucket) {
       return bucket.filter.name === bucketColor.filter.name;
@@ -19,7 +23,8 @@ var generateCategories = function (bucketsColor, bucketsIcon) {
     return {
       title: bucketColor.filter.name,
       icon: (bucketIcon && bucketIcon.value) ? _extractURL(bucketIcon.value) : '',
-      color: bucketColor.value
+      color: bucketColor.value,
+      style: MAPPING_STYLE[prop]
     };
   });
 };
@@ -45,6 +50,7 @@ module.exports = {
   adapt: function (rules) {
     var ruleColor = new Rule(rules[0]);
     var ruleIcon = new Rule(rules[1]);
+    var prop = ruleColor.getProperty();
 
     var categoryBucketsColor = ruleColor.getBucketsWithCategoryFilter();
     var categoryBucketsIcon = ruleIcon.getBucketsWithCategoryFilter();
@@ -52,10 +58,11 @@ module.exports = {
     var defaultBucketsIcon = ruleIcon.getBucketsWithDefaultFilter();
 
     return {
-      categories: generateCategories(categoryBucketsColor, categoryBucketsIcon),
+      categories: generateCategories(categoryBucketsColor, categoryBucketsIcon, prop),
       default: {
         icon: _.isEmpty(defaultBucketsIcon) ? '' : _extractURL(defaultBucketsIcon[0].value),
-        color: _.isEmpty(defaultBucketsColor) ? '' : defaultBucketsColor[0].value
+        color: _.isEmpty(defaultBucketsColor) ? '' : defaultBucketsColor[0].value,
+        style: MAPPING_STYLE[prop]
       }
     };
   }
