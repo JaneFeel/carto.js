@@ -66,8 +66,8 @@ module.exports = {
     var categoryBucketsIcon = ruleIcon.getBucketsWithCategoryFilter();
     var defaultBucketsColor = ruleColor.getBucketsWithDefaultFilter();
     var defaultBucketsIcon = ruleIcon.getBucketsWithDefaultFilter();
-    var icon = ''
 
+    var icon = ''
     if (prop == 'line-color') {
       icon = _lineColorLink(defaultBucketsColor[0].value)
     } else {
