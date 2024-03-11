@@ -78,7 +78,7 @@ var Search = View.extend({
 
   render: function () {
     // this.$el.html(this.template(this.options));
-    this.$el.html(<div class="search-placeholder"></div>);
+    // this.$el.html();
     return this;
   },
 
