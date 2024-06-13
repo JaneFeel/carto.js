@@ -77,8 +77,8 @@ var Search = View.extend({
   },
 
   render: function () {
-    // this.$el.html(this.template(this.options));
-    // this.$el.html();
+    this.$el.html(this.template(this.options));
+    this.$el.html();
     return this;
   },
 
