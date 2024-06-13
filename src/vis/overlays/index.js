@@ -7,6 +7,6 @@ module.exports = {
   tiles: require('./tiles'),
   loader: require('./loader'),
   logo: require('./logo'),
-  // search: require('./search'),
+  search: require('./search'),
   zoom: require('./zoom')
 };
