@@ -107,6 +107,13 @@ var Search = View.extend({
   },
 
   render: function () {
+    /**
+     * zzj updated 2024.6.14
+     * 问题：carto.js加载分析控件时会多次调用render，导致html添加多次
+     * 解决：每次都删除一下
+     */
+    $('.search2').remove();
+
     this.$el = $(template + style);
     this.$mapDiv.append(this.$el);
     this._bindEvents();
