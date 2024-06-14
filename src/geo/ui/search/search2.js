@@ -28,6 +28,9 @@ var style = `
     background-color: white;
     border-radius: 4px;
 }
+.search2 * {
+  box-sizing:border-box;
+}
 .search2 > div.input-wrapper{
     display: grid;
     height: 100%;
