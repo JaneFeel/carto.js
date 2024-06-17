@@ -188,6 +188,8 @@ var Search = View.extend({
           })
         });
       }
+    }).bindPopup(function (layer) {
+      return layer.feature.properties.name;
     });
     this.geojson.addTo(this.map);
     this.map.flyTo(this.geojson.getBounds().getCenter());
