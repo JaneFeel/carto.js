@@ -30,11 +30,20 @@ module.exports = View.extend({
 
     this._initBinds();
   },
-
+  _getValueFromCookie(key){
+    var cookie = document.cookie.split(';');
+    for(var i=0;i<cookie.length;i++){
+      var c = cookie[i].split('=');
+      if(c[0].trim() == key){
+        return c[1];
+      }
+    }
+  },
   render: function () {
+    let isEN = this._getValueFromCookie('locale') === 'en-US';
     this.$el.html(
       template({
-        limits: Sanitize.html('Some tiles might not be rendering correctly.')
+        limits: Sanitize.html(isEN?'Some tiles might not be rendering correctly.':'部分瓦片可能无法正确渲染.')
       })
     );
 
