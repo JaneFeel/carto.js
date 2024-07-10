@@ -56,7 +56,7 @@ var InfowindowModel = Backbone.Model.extend({
       content: {
         fields: [{
           type: 'loading',
-          title: 'loading',
+          title: _t('common.loading'),
           value: '…'
         }]
       }
@@ -70,7 +70,7 @@ var InfowindowModel = Backbone.Model.extend({
         fields: [{
           title: null,
           alternative_name: null,
-          value: 'There has been an error...',
+          value: _t('common.error'),
           index: null,
           type: 'error'
         }],
@@ -141,7 +141,7 @@ var InfowindowModel = Backbone.Model.extend({
     if (renderFields.length === 0) {
       renderFields.push({
         title: null,
-        value: 'No data available',
+        value: _t('common.no_data'),
         index: 0,
         type: 'empty'
       });
