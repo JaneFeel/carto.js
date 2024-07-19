@@ -259,6 +259,7 @@ $maxLegendContainerHeight: 300px;
   bottom: 0;
   left: 0;
   max-height: calc(100vh - 90px);
+  min-width: 180px;
   padding: 24px 24px 0;
   border-radius: $baseSize / 2;
   box-sizing: border-box;
@@ -275,7 +276,7 @@ $maxLegendContainerHeight: 300px;
 }
 .CDB-Legends-toggle {
   position: absolute;
-  top: 5px;
+  top: 2px;
   right: 5px;
 }
 .CDB-Legends-canvasShadow--top {
