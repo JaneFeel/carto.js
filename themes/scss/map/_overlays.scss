@@ -245,6 +245,7 @@ $maxLegendContainerHeight: 300px;
   width: auto;
   height: auto;
   max-height: calc(100vh - 90px);
+  min-width: 180px;
   border-radius: 4px;
   background: #FFF;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
