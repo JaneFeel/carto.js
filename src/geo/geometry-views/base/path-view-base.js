@@ -134,6 +134,7 @@ var PathViewBase = GeometryViewBase.extend({
     _.each(this._middlePointViews, function (view, point) {
       view.clean();
     });
+    this._middlePointViews = {};
   },
 
   _createPointView: function (point) {
