@@ -8,10 +8,12 @@ var LeafletMapView = MapView.extend({
   _createNativeMap: function () {
     var self = this;
     var center = this.map.get('center');
+    var normalizedLat = this._normalizeLatitude(center[0]);
+    var normalizedLng = this._normalizeLongitude(center[1]);
 
     var mapConfig = {
       zoomControl: false,
-      center: new L.LatLng(center[0], center[1]),
+      center: new L.LatLng(normalizedLat, normalizedLng),
       zoom: this.map.get('zoom'),
       minZoom: this.map.get('minZoom'),
       maxZoom: this.map.get('maxZoom'),
@@ -168,9 +170,20 @@ var LeafletMapView = MapView.extend({
     this._setView();
   },
 
+  _normalizeLatitude: function(lat) {
+    return Math.max(-90, Math.min(90, lat));
+  },
+  
+  _normalizeLongitude: function(lng) {
+    return ((lng + 180) % 360 + 360) % 360 - 180;
+  },
+
   _setView: function () {
     if (this.map.hasChanged('zoom') || this.map.hasChanged('center')) {
-      this._leafletMap.setView(this.map.get('center'), this.map.get('zoom') || 0);
+      var center = this.map.get('center');
+      var normalizedLat = this._normalizeLatitude(center[0]);
+      var normalizedLng = this._normalizeLongitude(center[1]);
+      this._leafletMap.setView([normalizedLat, normalizedLng], this.map.get('zoom') || 0);  
     }
   },
 
@@ -234,7 +247,9 @@ var LeafletMapView = MapView.extend({
     var center = this.map.get('center');
     var zoom = this.map.get('zoom');
     this._leafletMap.invalidateSize({ pan: false, animate: false });
-    this._leafletMap.setView(center, zoom, { pan: false, animate: false });
+    var normalizedLat = this._normalizeLatitude(center[0]);
+    var normalizedLng = this._normalizeLongitude(center[1]);
+    this._leafletMap.setView([normalizedLat, normalizedLng], zoom, { pan: false, animate: false });
     this.map.setMapViewSize(this.getSize());
   },
 
