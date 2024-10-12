@@ -26,7 +26,7 @@ module.exports = {
           plugins: ['transform-object-rest-spread']
         }]
       ],
-      require: [ 'camshaft-reference/versions/0.59.4/reference.json:./versions/0.59.4/reference.json' ]
+      require: [ 'camshaft-reference/versions/0.67.6/reference.json:./versions/0.67.6/reference.json' ]
     }
   },
 
@@ -39,7 +39,7 @@ module.exports = {
     ],
     dest: '<%= dist %>/internal/cartodb.uncompressed.js',
     options: {
-      require: [ 'camshaft-reference/versions/0.59.4/reference.json:./versions/0.59.4/reference.json' ]
+      require: [ 'camshaft-reference/versions/0.67.6/reference.json:./versions/0.67.6/reference.json' ]
     }
   }
 };
