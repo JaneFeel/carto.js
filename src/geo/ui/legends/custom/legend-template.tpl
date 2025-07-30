@@ -19,7 +19,7 @@
             }
           %>"></span>
         <% } %>
-      <% } else if (items[i].style == 'pattern-file' || items[i].style == 'line-color') { %>
+      <% } else if (items[i].style == 'pattern') { %>
         <span class="Legend-categoryFile" style="background-image: url(<%= items[i].icon %>);"></span>
       <% } else if (items[i].style == 'line-pattern-file') { %>
         <span class="Legend-categoryLineFile"><span style="background-image: url(<%= items[i].icon %>);"></span></span>
