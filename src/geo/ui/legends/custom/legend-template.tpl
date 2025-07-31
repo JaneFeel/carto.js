@@ -21,7 +21,7 @@
         <% } %>
       <% } else if (items[i].style == 'pattern') { %>
         <span class="Legend-categoryFile" style="background-image: url(<%= items[i].icon %>);"></span>
-      <% } else if (items[i].style == 'line-pattern-file') { %>
+      <% } else if (items[i].style == 'line') { %>
         <span class="Legend-categoryLineFile"><span style="background-image: url(<%= items[i].icon %>);"></span></span>
       <% } else if (items[i].icon) { %>
         <span class="Legend-categoryIcon js-image-container" data-icon="<%= items[i].icon %>" <% if (items[i].color) { %>data-color="<%= items[i].color %>"<% } %>></span>
