@@ -140,7 +140,7 @@ var Search = View.extend({
       this._onClear();
       return;
     }
-    $.getJSON(`${window?.userData?.api?.place_search || 'https://202.107.245.40:4002/v2/search'}?text=${val}&size=10`).then(res=>{
+    $.getJSON(`${window?.userData?.api?.place_search || '/geonames/v2/search'}?text=${val}&size=10`).then(res=>{
       this._setResult(res.features);
     });
   },
